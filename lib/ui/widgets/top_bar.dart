@@ -11,7 +11,10 @@ class TopBar extends StatelessWidget {
       children: [
         const Icon(Icons.location_on, color: AppColors.primary),
         const SizedBox(width: 4),
-        const Text("Guayaquil", style: TextStyle(fontWeight: FontWeight.bold)),
+        const Text(
+          "Guayaquil - Ecuador",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         const Spacer(),
         Image.asset(Assets.logo, width: 90, height: 40, fit: BoxFit.cover),
       ],

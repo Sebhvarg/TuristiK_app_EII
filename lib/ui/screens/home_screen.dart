@@ -3,7 +3,11 @@ import '../widgets/top_bar.dart';
 import '../widgets/search_bar.dart';
 import '../widgets/event_section.dart';
 import '../widgets/artist_card.dart';
+import '../widgets/artist_section.dart';
 import '../../data/dummy_data.dart';
+
+// Add this import or definition if 'newArtists' is missing from dummy_data.dart
+// import or define 'newArtists' here if not already present
 import '../navigation/bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -26,6 +30,12 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
+                    // Poner una linea debajo de la barra de búsqueda
+                    Padding(
+                      padding: EdgeInsets.only(top: 0, bottom: 10),
+                      child: Divider(thickness: 1.5, color: Colors.grey),
+                    ),
+
                     const Text(
                       "Eventos Cercanos",
                       style: TextStyle(
@@ -43,21 +53,12 @@ class HomeScreen extends StatelessWidget {
                       icon: Icons.music_note,
                       events: conciertos,
                     ),
+
                     const SizedBox(height: 10),
-                    const Text(
-                      "Artistas",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Expanded(child: ArtistCard(artist: artists[0])),
-                        const SizedBox(width: 10),
-                        Expanded(child: ArtistCard(artist: artists[1])),
-                      ],
+                    ArtistSection(
+                      title: 'Artistas',
+                      icon: Icons.person,
+                      artists: artists,
                     ),
                   ],
                 ),

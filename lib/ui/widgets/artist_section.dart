@@ -1,18 +1,18 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import '../../data/models/event_model.dart';
-import 'event_card.dart';
+import '../../data/models/artist_model.dart';
+import 'artist_card.dart';
 
-class EventSection extends StatelessWidget {
+class ArtistSection extends StatelessWidget {
   final String title;
   final IconData icon;
-  final List<EventModel> events;
+  final List<ArtistModel> artists;
 
-  const EventSection({
+  const ArtistSection({
     super.key,
     required this.title,
     required this.icon,
-    required this.events,
+    required this.artists,
   });
 
   @override
@@ -33,14 +33,13 @@ class EventSection extends StatelessWidget {
         const SizedBox(height: 10),
         CarouselSlider(
           options: CarouselOptions(
-            height: 245,
+            height: 180,
+            viewportFraction: 0.4,
             enableInfiniteScroll: false,
-            viewportFraction: 0.48,
             padEnds: false,
           ),
-          items: events.map((event) => EventCard(event: event)).toList(),
+          items: artists.map((artist) => ArtistCard(artist: artist)).toList(),
         ),
-
         const SizedBox(height: 20),
       ],
     );

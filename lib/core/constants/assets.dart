@@ -11,5 +11,7 @@ class Assets {
   static const artistPlaceholder = [
     'assets/img/artist/that_day.jpg',
     'assets/img/artist/guardarraya.jpg',
+    'assets/img/artist/escarlatasband.jpg',
+    'assets/img/artist/aspyband.jpg',
   ];
 }

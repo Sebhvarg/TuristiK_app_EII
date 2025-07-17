@@ -40,5 +40,7 @@ final List<EventModel> conciertos = [
 
 final List<ArtistModel> artists = [
   ArtistModel(name: 'That Day', imagePath: Assets.artistPlaceholder[0]),
+  ArtistModel(name: 'Escarlatas Band', imagePath: Assets.artistPlaceholder[2]),
+  ArtistModel(name: 'Aspy Band', imagePath: Assets.artistPlaceholder[3]),
   ArtistModel(name: 'Guardarraya', imagePath: Assets.artistPlaceholder[1]),
 ];
