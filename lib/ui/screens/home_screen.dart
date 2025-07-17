@@ -26,6 +26,13 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
+                    const Text(
+                      "Eventos Cercanos",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     EventSection(
                       title: 'Teatro',
                       icon: Icons.theater_comedy,
