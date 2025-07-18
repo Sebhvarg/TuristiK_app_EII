@@ -39,8 +39,54 @@ final List<EventModel> conciertos = [
 ];
 
 final List<ArtistModel> artists = [
-  ArtistModel(name: 'That Day', imagePath: Assets.artistPlaceholder[0]),
-  ArtistModel(name: 'Escarlatas Band', imagePath: Assets.artistPlaceholder[2]),
-  ArtistModel(name: 'Aspy Band', imagePath: Assets.artistPlaceholder[3]),
-  ArtistModel(name: 'Guardarraya', imagePath: Assets.artistPlaceholder[1]),
+  ArtistModel(
+    name: 'That Day',
+    imagePath: Assets.artistPlaceholder[0],
+    description:
+        'Grupo formado en Guayaquil/Ecuador, en el año 2017. Sus cuatro integrantes: Nahin Naranjo (guitarrista), Ariel Reyes (baterista), Joe Haner (bajista) y Miguel Ash (vocalista/guitarrista) apuestan por un sonido melancólico y energético a la vez, siendo estas a raíz del pop/punk/rock. Viéndose influenciado por bandas como Blink 182, Sum 41 y PXNDX, llevan a cabo el proyecto That Day, lanzando su primer sencillo Verano.',
+    genre: 'Rock - Punk',
+    spotifyUrl:
+        'https://open.spotify.com/artist/1wc3fmOxTvj3AxBBxgHuio?si=yuh186NJReK0y0axI76bmQ',
+    nextEventDate: '2025-08-09',
+    socialLinks: [
+      'https://www.facebook.com/thatday',
+      'https://www.instagram.com/thatday',
+    ],
+  ),
+  ArtistModel(
+    name: 'Escarlatas Band',
+    imagePath: Assets.artistPlaceholder[2],
+    description: 'Banda de rock en español.',
+    genre: 'Rock en Español',
+    spotifyUrl: 'https://open.spotify.com/artist/1sNOF9nA2nq8c2j8c2j8c2',
+    nextEventDate: '2025-07-15',
+    socialLinks: [
+      'https://www.facebook.com/escarlatasband',
+      'https://www.instagram.com/escarlatasband',
+    ],
+  ),
+  ArtistModel(
+    name: 'Aspy Band',
+    imagePath: Assets.artistPlaceholder[3],
+    description: 'Banda de metal progresivo.',
+    genre: 'Metal Progresivo',
+    spotifyUrl: 'https://open.spotify.com/artist/2sNOF9nA2nq8c2j8c2j8c2',
+    nextEventDate: '2025-08-20',
+    socialLinks: [
+      'https://www.facebook.com/aspyband',
+      'https://www.instagram.com/aspyband',
+    ],
+  ),
+  ArtistModel(
+    name: 'Guardarraya',
+    imagePath: Assets.artistPlaceholder[1],
+    description: 'Banda de música fusión.',
+    genre: 'Fusión',
+    spotifyUrl: 'https://open.spotify.com/artist/3sNOF9nA2nq8c2j8c2j8c2',
+    nextEventDate: '2025-07-30',
+    socialLinks: [
+      'https://www.facebook.com/guardarraya',
+      'https://www.instagram.com/guardarraya',
+    ],
+  ),
 ];

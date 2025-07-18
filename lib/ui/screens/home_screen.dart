@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../widgets/top_bar.dart';
 import '../widgets/search_bar.dart';
 import '../widgets/event_section.dart';
-import '../widgets/artist_card.dart';
 import '../widgets/artist_section.dart';
 import '../../data/dummy_data.dart';
 
