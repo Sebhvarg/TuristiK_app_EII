@@ -5,17 +5,12 @@ import '../widgets/event_section.dart';
 import '../widgets/artist_section.dart';
 import '../../data/dummy_data.dart';
 
-// Add this import or definition if 'newArtists' is missing from dummy_data.dart
-// import or define 'newArtists' here if not already present
-import '../navigation/bottom_nav_bar.dart';
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const BottomNavBar(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),

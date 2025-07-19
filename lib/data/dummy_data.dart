@@ -45,6 +45,7 @@ final List<ArtistModel> artists = [
     description:
         'Grupo formado en Guayaquil/Ecuador, en el año 2017. Sus cuatro integrantes: Nahin Naranjo (guitarrista), Ariel Reyes (baterista), Joe Haner (bajista) y Miguel Ash (vocalista/guitarrista) apuestan por un sonido melancólico y energético a la vez, siendo estas a raíz del pop/punk/rock. Viéndose influenciado por bandas como Blink 182, Sum 41 y PXNDX, llevan a cabo el proyecto That Day, lanzando su primer sencillo Verano.',
     genre: 'Rock - Punk',
+    type: 'Banda musical',
     spotifyUrl:
         'https://open.spotify.com/artist/1wc3fmOxTvj3AxBBxgHuio?si=yuh186NJReK0y0axI76bmQ',
     nextEventDate: '2025-08-09',
@@ -57,6 +58,7 @@ final List<ArtistModel> artists = [
     name: 'Escarlatas Band',
     imagePath: Assets.artistPlaceholder[2],
     description: 'Banda de rock en español.',
+    type: 'Banda musical',
     genre: 'Rock en Español',
     spotifyUrl: 'https://open.spotify.com/artist/1sNOF9nA2nq8c2j8c2j8c2',
     nextEventDate: '2025-07-15',
@@ -69,6 +71,7 @@ final List<ArtistModel> artists = [
     name: 'Aspy Band',
     imagePath: Assets.artistPlaceholder[3],
     description: 'Banda de metal progresivo.',
+    type: 'Banda musical',
     genre: 'Metal Progresivo',
     spotifyUrl: 'https://open.spotify.com/artist/2sNOF9nA2nq8c2j8c2j8c2',
     nextEventDate: '2025-08-20',
@@ -81,6 +84,7 @@ final List<ArtistModel> artists = [
     name: 'Guardarraya',
     imagePath: Assets.artistPlaceholder[1],
     description: 'Banda de música fusión.',
+    type: 'Banda musical',
     genre: 'Fusión',
     spotifyUrl: 'https://open.spotify.com/artist/3sNOF9nA2nq8c2j8c2j8c2',
     nextEventDate: '2025-07-30',
