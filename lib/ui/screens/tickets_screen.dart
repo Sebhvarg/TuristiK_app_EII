@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turistik/core/constants/colors.dart';
 
 class TicketsScreen extends StatelessWidget {
   const TicketsScreen({super.key});
@@ -7,14 +8,23 @@ class TicketsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Mis Tickets"),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: AppColors.background,
+        title: const Text(
+          'Tus Entradas',
+          style: TextStyle(
+            color: AppColors.accent,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        elevation: 0,
       ),
       body: const Center(
         child: Text(
-          "Aquí aparecerán los tickets que has comprado.",
-          textAlign: TextAlign.center,
+          'Aquí aparecerán tus entradas compradas 🎫',
           style: TextStyle(fontSize: 16),
+          textAlign: TextAlign.center,
         ),
       ),
     );

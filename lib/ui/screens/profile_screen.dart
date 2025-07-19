@@ -20,7 +20,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: const Text(
           "Perfil",
           style: TextStyle(
-            color: AppColors.text,
+            color: AppColors.accent,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),

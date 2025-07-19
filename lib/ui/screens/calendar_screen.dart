@@ -20,7 +20,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         title: const Text(
           "Calendario de Eventos",
           style: TextStyle(
-            color: AppColors.text,
+            color: AppColors.accent,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
