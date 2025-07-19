@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/models/event_model.dart';
+import '../../ui/screens/event_detail_screen.dart'; // Asegúrate que esta ruta es correcta
 
 class EventCard extends StatelessWidget {
   final EventModel event;
@@ -9,7 +10,7 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 220, // debe coincidir con el height del CarouselSlider
+      height: 220,
       child: Card(
         elevation: 4,
         margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
@@ -24,7 +25,7 @@ class EventCard extends StatelessWidget {
               width: double.infinity,
               child: Image.asset(event.imagePath, fit: BoxFit.cover),
             ),
-            // Contenido con espacio limitado
+            // Contenido
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(10),
@@ -74,11 +75,19 @@ class EventCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const Spacer(), // Empuja el botón al fondo
+                    const Spacer(),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  EventDetailScreen(event: event),
+                            ),
+                          );
+                        },
                         style: TextButton.styleFrom(
                           foregroundColor: const Color(0xFF025E73),
                           padding: EdgeInsets.zero,
