@@ -26,11 +26,6 @@ class _MainScreenState extends State<MainScreen> {
 
   void _onItemTapped(int index) {
     if (_selectedIndex == index) return;
-
-    final direction = index > _selectedIndex
-        ? AxisDirection.left
-        : AxisDirection.right;
-
     // Cambia la página con animación deslizante
     _pageController.animateToPage(
       index,

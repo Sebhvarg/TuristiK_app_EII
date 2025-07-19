@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:turistik/ui/navigation/bottom_nav_bar.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});

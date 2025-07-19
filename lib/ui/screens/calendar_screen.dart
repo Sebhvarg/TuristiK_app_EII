@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:turistik/ui/navigation/bottom_nav_bar.dart';
 
 class CalendarScreen extends StatelessWidget {
   const CalendarScreen({super.key});
