@@ -1,5 +1,6 @@
 import 'models/event_model.dart';
 import 'models/artist_model.dart';
+import 'models/profile_model.dart';
 import '../core/constants/assets.dart';
 
 final List<EventModel> teatroEvents = [
@@ -94,3 +95,9 @@ final List<ArtistModel> artists = [
     ],
   ),
 ];
+final ProfileModel userProfile = ProfileModel(
+  name: 'Felipe Brooks',
+  email: 'johncena@espol.edu.ec',
+  phoneNumber: '096 123 5556',
+  profilePictureUrl: Assets.profilePlaceholder,
+);

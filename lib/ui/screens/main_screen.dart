@@ -4,6 +4,7 @@ import 'package:turistik/ui/screens/favorite_screen.dart';
 import 'package:turistik/ui/screens/tickets_screen.dart';
 import 'package:turistik/ui/screens/calendar_screen.dart';
 import 'package:turistik/ui/screens/profile_screen.dart';
+import 'package:turistik/data/dummy_data.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -13,15 +14,17 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
   final PageController _pageController = PageController();
 
-  final List<Widget> _screens = const [
-    HomeScreen(),
-    FavoriteScreen(),
-    TicketsScreen(),
-    CalendarScreen(),
-    ProfileScreen(),
+  final List<Widget> _screens = [
+    const FavoriteScreen(),
+    const TicketsScreen(),
+    const HomeScreen(),
+    const CalendarScreen(),
+    ProfileScreen(
+      userProfile: userProfile,
+    ), // Asegúrate de pasar el perfil del usuario
   ];
 
   void _onItemTapped(int index) {
@@ -58,7 +61,6 @@ class _MainScreenState extends State<MainScreen> {
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Inicio"),
             BottomNavigationBarItem(
               icon: Icon(Icons.favorite),
               label: "Favoritos",
@@ -67,6 +69,7 @@ class _MainScreenState extends State<MainScreen> {
               icon: Icon(Icons.local_activity),
               label: "Tickets",
             ),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Inicio"),
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today),
               label: "Calendario",

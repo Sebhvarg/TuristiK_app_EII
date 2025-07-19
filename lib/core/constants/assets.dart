@@ -14,4 +14,5 @@ class Assets {
     'assets/img/artist/escarlatasband.jpg',
     'assets/img/artist/aspyband.jpg',
   ];
+  static const profilePlaceholder = 'assets/img/profile/profile.jpg';
 }

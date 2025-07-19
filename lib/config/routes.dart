@@ -4,6 +4,7 @@ import '../../ui/screens/favorite_screen.dart';
 import '../../ui/screens/tickets_screen.dart';
 import '../../ui/screens/profile_screen.dart';
 import '../../ui/screens/calendar_screen.dart';
+import 'package:turistik/data/dummy_data.dart';
 
 class AppRoutes {
   static const String home = '/home';
@@ -16,7 +17,7 @@ class AppRoutes {
     AppRoutes.favorites: (context) => const FavoriteScreen(),
     AppRoutes.tickets: (context) => const TicketsScreen(),
     AppRoutes.calendar: (context) => const CalendarScreen(),
-    AppRoutes.profile: (context) => const ProfileScreen(),
+    AppRoutes.profile: (context) => ProfileScreen(userProfile: userProfile),
     AppRoutes.home: (context) => const HomeScreen(),
   };
 }

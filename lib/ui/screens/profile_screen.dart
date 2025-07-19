@@ -1,37 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:turistik/core/constants/colors.dart';
+import 'package:turistik/data/dummy_data.dart';
+import '../../data/models/profile_model.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class ProfileScreen extends StatefulWidget {
+  final ProfileModel userProfile;
 
+  const ProfileScreen({super.key, required this.userProfile});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Perfil"),
-        backgroundColor: Theme.of(context).primaryColor,
-      ),
+      appBar: AppBar(backgroundColor: AppColors.background),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const CircleAvatar(
+            CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage(
-                'assets/images/profile_placeholder.png',
-              ),
+                userProfile.profilePictureUrl,
+              ), // Placeholder image
             ),
             const SizedBox(height: 16),
             Text(
-              "Sebastián Vargas",
+              widget.userProfile.name,
               style: Theme.of(
                 context,
               ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            const Text(
-              "sebastian@email.com",
-              style: TextStyle(color: Colors.grey),
+            Text(
+              widget.userProfile.email,
+              style: const TextStyle(color: Colors.grey),
             ),
             const SizedBox(height: 24),
             ListTile(
