@@ -7,6 +7,8 @@ class EventModel {
   final String description;
   final bool isFree;
   final double? price;
+  final String type;
+  final List<String> artistId;
 
   EventModel({
     required this.title,
@@ -17,5 +19,7 @@ class EventModel {
     required this.description,
     required this.isFree,
     this.price,
+    required this.type,
+    required this.artistId,
   });
 }

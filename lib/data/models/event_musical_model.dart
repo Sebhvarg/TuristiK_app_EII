@@ -17,5 +17,6 @@ class MusicalEventModel extends EventModel {
     this.spotifyUrl,
     required this.musicalType,
     required this.artistNames,
-  });
+    required super.artistId,
+  }) : super(type: 'Musical');
 }

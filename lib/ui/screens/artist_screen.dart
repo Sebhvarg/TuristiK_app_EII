@@ -15,13 +15,18 @@ class _ArtistScreenState extends State<ArtistScreen> {
   bool isFavorite = false;
 
   void _launchUrl(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final artist = widget.artist;
+    Text('Géneros: ${artist.genresText}');
+    Text('Tipo: ${artist.artistTypeText}');
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -60,9 +65,11 @@ class _ArtistScreenState extends State<ArtistScreen> {
       body: Stack(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(10),
+            ),
             child: Image.asset(
-              widget.artist.imagePath,
+              artist.imagePath,
               height: 250,
               fit: BoxFit.cover,
               width: double.infinity,
@@ -74,13 +81,13 @@ class _ArtistScreenState extends State<ArtistScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(height: 250),
+                const SizedBox(height: 250),
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
-                      borderRadius: const BorderRadius.vertical(
+                      borderRadius: BorderRadius.vertical(
                         bottom: Radius.circular(10),
                       ),
                     ),
@@ -88,7 +95,7 @@ class _ArtistScreenState extends State<ArtistScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          widget.artist.name,
+                          artist.name,
                           style: Theme.of(context).textTheme.titleLarge
                               ?.copyWith(
                                 fontWeight: FontWeight.bold,
@@ -97,23 +104,23 @@ class _ArtistScreenState extends State<ArtistScreen> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          "Tipo de artista: ${widget.artist.type}",
+                          "Tipo de artista: ${artist.artistTypeText}",
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Color.fromARGB(255, 0, 0, 0),
+                            color: Colors.black,
                           ),
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          "Género ${widget.artist.genre}",
+                          "Géneros: ${artist.genresText}",
                           style: const TextStyle(fontStyle: FontStyle.italic),
                         ),
                         const SizedBox(height: 4),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Text(
-                            widget.artist.description ?? '',
+                            artist.description,
                             textAlign: TextAlign.justify,
                             style: const TextStyle(
                               color: Colors.black,
@@ -135,66 +142,67 @@ class _ArtistScreenState extends State<ArtistScreen> {
                           runSpacing: 10,
                           alignment: WrapAlignment.center,
                           children: [
-                            ElevatedButton.icon(
-                              onPressed: () {},
-                              icon: const Icon(Icons.music_note),
-                              label: const Text(
-                                "Escucha su música",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.black,
-                                iconColor: Colors.white,
-                                textStyle: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
+                            if ((artist as dynamic).spotifyUrl != null)
+                              ElevatedButton.icon(
+                                onPressed: () =>
+                                    _launchUrl((artist as dynamic).spotifyUrl),
+                                icon: const Icon(Icons.music_note),
+                                label: const Text(
+                                  "Escucha su música",
+                                  style: TextStyle(color: Colors.white),
                                 ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.black,
+                                  iconColor: Colors.white,
+                                  textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
                                 ),
                               ),
-                            ),
                           ],
                         ),
                         const SizedBox(height: 18),
-                        Text(
-                          "Próximo evento: ${widget.artist.nextEventDate ?? 'No disponible'}",
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54,
-                          ),
-                        ),
+
                         const SizedBox(height: 18),
-                        const Text(
-                          "Enlaces sociales:",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54,
+                        if ((artist as dynamic).socialLinks != null)
+                          const Text(
+                            "Enlaces sociales:",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black54,
+                            ),
                           ),
-                        ),
                         const SizedBox(height: 8),
-                        Wrap(
-                          spacing: 10,
-                          runSpacing: 10,
-                          alignment: WrapAlignment.center,
-                          children: widget.artist.socialLinks.map((link) {
-                            return ElevatedButton(
-                              onPressed: () => _launchUrl(link),
-                              child: Text(
-                                link.split('//')[1],
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                              ),
-                            );
-                          }).toList(),
-                        ),
+                        if ((artist as dynamic).socialLinks != null)
+                          Wrap(
+                            spacing: 10,
+                            runSpacing: 10,
+                            alignment: WrapAlignment.center,
+                            children: (artist as dynamic).socialLinks
+                                .map<Widget>((link) {
+                                  return ElevatedButton(
+                                    onPressed: () => _launchUrl(link),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.blue,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(16),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      link.split('//')[1],
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  );
+                                })
+                                .toList(),
+                          ),
                       ],
                     ),
                   ),

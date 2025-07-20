@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:turistik/data/models/artist_musical_model.dart';
+import 'package:turistik/data/models/event_musical_model.dart';
+import 'package:turistik/data/models/event_teatral_model.dart';
 import '../widgets/top_bar.dart';
 import '../widgets/search_bar.dart';
 import '../widgets/event_section.dart';
@@ -7,6 +10,10 @@ import '../../data/dummy_data.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  List<MusicalEventModel> get conciertos => concerts;
+  List<TeatralEventModel> get teatrosE => teatroEvents;
+  List<MusicalArtistModel> get artists => artistsmusical;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +31,8 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
-                    // Poner una linea debajo de la barra de búsqueda
-                    Padding(
+                    // Línea debajo de la barra de búsqueda
+                    const Padding(
                       padding: EdgeInsets.only(top: 0, bottom: 10),
                       child: Divider(thickness: 1.5, color: Colors.grey),
                     ),
@@ -37,6 +44,7 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    const SizedBox(height: 10),
                     EventSection(
                       title: 'Teatro',
                       icon: Icons.theater_comedy,
@@ -47,7 +55,6 @@ class HomeScreen extends StatelessWidget {
                       icon: Icons.music_note,
                       events: conciertos,
                     ),
-
                     const SizedBox(height: 10),
                     ArtistSection(
                       title: 'Artistas',

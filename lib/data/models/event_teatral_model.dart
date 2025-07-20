@@ -17,5 +17,6 @@ class TeatralEventModel extends EventModel {
     required this.teatroType,
     required this.artistNames,
     required this.director,
-  });
+    required super.artistId,
+  }) : super(type: 'Teatral');
 }
