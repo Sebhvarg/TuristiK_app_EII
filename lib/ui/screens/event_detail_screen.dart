@@ -4,6 +4,7 @@ import 'package:turistik/data/models/artist_teatral_model.dart';
 import 'package:turistik/data/models/event_musical_model.dart';
 import '../../data/models/event_model.dart';
 import 'package:turistik/ui/screens/artist_screen.dart';
+import 'package:turistik/ui/screens/ticket_buy_screen.dart';
 
 class EventDetailScreen extends StatelessWidget {
   final EventModel event;
@@ -231,7 +232,12 @@ class EventDetailScreen extends StatelessWidget {
                         const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {
-                            // Acción para comprar entradas
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TicketBuyScreen(event: event),
+                              ),
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
