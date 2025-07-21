@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pago.dart';
 
 class SeleccionAsientosScreen extends StatefulWidget {
   final int ticketCount;
@@ -215,7 +216,16 @@ class _SeleccionAsientosScreenState extends State<SeleccionAsientosScreen> {
                 child: ElevatedButton(
                   onPressed: selectedSeats.length == widget.ticketCount
                       ? () {
-                          // Acción para ir a pagar
+                          // Aquí puedes ajustar el precio según tu lógica, por ejemplo 5.0 por boleto
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PagoScreen(
+                                ticketCount: widget.ticketCount,
+                                ticketPrice: 5.0, // Cambia esto si tienes el precio real
+                              ),
+                            ),
+                          );
                         }
                       : null,
                   style: ElevatedButton.styleFrom(
