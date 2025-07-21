@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../data/models/artist_model.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../data/dummy_data.dart';
+import 'event_detail_screen.dart';
 
 class ArtistScreen extends StatefulWidget {
   final ArtistModel artist;
@@ -24,8 +26,14 @@ class _ArtistScreenState extends State<ArtistScreen> {
   @override
   Widget build(BuildContext context) {
     final artist = widget.artist;
-    Text('Géneros: ${artist.genresText}');
-    Text('Tipo: ${artist.artistTypeText}');
+    Text('Géneros:  [1m${artist.genresText} [0m');
+    Text('Tipo:  [1m${artist.artistTypeText} [0m');
+
+    // Buscar eventos donde aparece este artista
+    final List<dynamic> upcomingEvents = [
+      ...concerts.where((event) => event.artistId.contains(artist.id)),
+      ...teatroEvents.where((event) => event.artistId.contains(artist.id)),
+    ];
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -167,6 +175,47 @@ class _ArtistScreenState extends State<ArtistScreen> {
                         ),
                         const SizedBox(height: 18),
 
+                        // Sección de próximos eventos
+                        if (upcomingEvents.isNotEmpty) ...[
+                          const SizedBox(height: 18),
+                          const Text(
+                            "Próximos eventos:",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Column(
+                            children: upcomingEvents.map<Widget>((event) {
+                              return Card(
+                                margin: const EdgeInsets.symmetric(vertical: 6),
+                                child: ListTile(
+                                  leading: CircleAvatar(
+                                    backgroundImage: AssetImage(event.imagePath),
+                                    radius: 22,
+                                  ),
+                                  title: Text(event.title),
+                                  subtitle: Text("${event.date} • ${event.location}"),
+                                  trailing: const Icon(Icons.arrow_forward_ios, size: 18),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => EventDetailScreen(
+                                          event: event,
+                                          artistsMusical: artistsmusical,
+                                          artistsTeatral: artistsTeatral,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ],
                         const SizedBox(height: 18),
                         if ((artist as dynamic).socialLinks != null)
                           const Text(
