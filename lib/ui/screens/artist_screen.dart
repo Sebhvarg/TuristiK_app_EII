@@ -3,6 +3,11 @@ import '../../data/models/artist_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../data/dummy_data.dart';
 import 'event_detail_screen.dart';
+import '../../ui/widgets/artist_card.dart';
+import '../../ui/screens/favorite_screen.dart';
+
+// Lista global temporal de favoritos (para demo, reemplazar por Provider o almacenamiento real en producción)
+List<ArtistModel> favoriteArtists = [];
 
 class ArtistScreen extends StatefulWidget {
   final ArtistModel artist;
@@ -21,6 +26,12 @@ class _ArtistScreenState extends State<ArtistScreen> {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    isFavorite = favoriteArtists.any((a) => a.id == widget.artist.id);
   }
 
   @override
@@ -64,6 +75,13 @@ class _ArtistScreenState extends State<ArtistScreen> {
             onPressed: () {
               setState(() {
                 isFavorite = !isFavorite;
+                if (isFavorite) {
+                  if (!favoriteArtists.any((a) => a.id == artist.id)) {
+                    favoriteArtists.add(artist);
+                  }
+                } else {
+                  favoriteArtists.removeWhere((a) => a.id == artist.id);
+                }
               });
             },
           ),
