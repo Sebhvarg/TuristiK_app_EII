@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:turistik/data/models/event_model.dart';
+import 'seleccion_asientos.dart';
 
 class TicketBuyScreen extends StatefulWidget {
   final EventModel event;
@@ -139,7 +140,12 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Acción para seleccionar asientos
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SeleccionAsientosScreen(ticketCount: ticketCount),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey.shade300,
