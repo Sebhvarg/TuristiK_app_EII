@@ -3,6 +3,7 @@ import 'package:turistik/data/models/artist_musical_model.dart';
 import 'package:turistik/data/models/artist_teatral_model.dart';
 import 'package:turistik/data/models/event_musical_model.dart';
 import '../../data/models/event_model.dart';
+import 'package:turistik/ui/screens/artist_screen.dart';
 
 class EventDetailScreen extends StatelessWidget {
   final EventModel event;
@@ -37,6 +38,7 @@ class EventDetailScreen extends StatelessWidget {
 
     // Obtener TODOS los artistas del evento
     List<dynamic> eventArtists = [];
+    List<String> notFoundArtistIds = [];
 
     if (event is MusicalEventModel) {
       // Para eventos musicales, obtener todos los artistas musicales
@@ -44,6 +46,8 @@ class EventDetailScreen extends StatelessWidget {
         final artist = getMusicalArtist(artistId);
         if (artist != null) {
           eventArtists.add(artist);
+        } else {
+          notFoundArtistIds.add(artistId);
         }
       }
     } else {
@@ -52,6 +56,8 @@ class EventDetailScreen extends StatelessWidget {
         final artist = getTeatralArtist(artistId);
         if (artist != null) {
           eventArtists.add(artist);
+        } else {
+          notFoundArtistIds.add(artistId);
         }
       }
     }
@@ -178,6 +184,12 @@ class EventDetailScreen extends StatelessWidget {
                                   trailing: const Icon(Icons.arrow_forward_ios),
                                   onTap: () {
                                     // Navegar al detalle del artista
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ArtistScreen(artist: artist),
+                                      ),
+                                    );
                                   },
                                 ),
                               );
@@ -193,10 +205,17 @@ class EventDetailScreen extends StatelessWidget {
                               const SizedBox(height: 10),
                               // Debug info
                               Text(
-                                'Debug: IDs buscados: ${event.artistId.join(", ")}',
+                                'Debug: IDs buscados:  [1m${event.artistId.join(", ")} [0m',
                                 style: const TextStyle(
                                   fontSize: 12,
                                   color: Colors.grey,
+                                ),
+                              ),
+                              Text(
+                                'IDs no encontrados:  [1m${notFoundArtistIds.join(", ")} [0m',
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.red,
                                 ),
                               ),
                               Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../data/models/event_model.dart';
 import '../../ui/screens/event_detail_screen.dart'; // Asegúrate que esta ruta es correcta
+import '../../data/dummy_data.dart'; // Importar los datos dummy
 
 class EventCard extends StatelessWidget {
   final EventModel event;
@@ -85,8 +86,8 @@ class EventCard extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (context) => EventDetailScreen(
                                 event: event,
-                                artistsMusical: [],
-                                artistsTeatral: [],
+                                artistsMusical: artistsmusical, // Lista completa
+                                artistsTeatral: artistsTeatral, // Lista completa
                               ),
                             ),
                           );
