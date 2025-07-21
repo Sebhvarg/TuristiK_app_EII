@@ -20,9 +20,7 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(
-          color: Theme.of(context).primaryColor,
-        ),
+        iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
         title: const Text(
           'TuristiK',
           style: TextStyle(
@@ -43,14 +41,14 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
               const SizedBox(height: 12),
               const Text(
                 'Seleccione los boletos',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 18),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(12),
@@ -61,8 +59,13 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        price > 0 ? ' 24${price.toStringAsFixed(0)} por persona' : 'Gratis',
-                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                        price > 0
+                            ? ' \$${price.toStringAsFixed(0)} por persona'
+                            : 'Gratis',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                     IconButton(
@@ -73,7 +76,10 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                     ),
                     Text(
                       '$ticketCount',
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     IconButton(
                       icon: const Icon(Icons.add),
@@ -116,7 +122,9 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                     color: Colors.grey.shade300,
                     height: 180,
                     width: double.infinity,
-                    child: const Center(child: Icon(Icons.map, size: 60, color: Colors.grey)),
+                    child: const Center(
+                      child: Icon(Icons.map, size: 60, color: Colors.grey),
+                    ),
                   ),
                 ),
               ),
@@ -142,7 +150,11 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                   ),
                   child: const Text(
                     'Seleccionar asientos',
-                    style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),

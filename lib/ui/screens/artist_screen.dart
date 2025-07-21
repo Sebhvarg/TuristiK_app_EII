@@ -3,8 +3,6 @@ import '../../data/models/artist_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../data/dummy_data.dart';
 import 'event_detail_screen.dart';
-import '../../ui/widgets/artist_card.dart';
-import '../../ui/screens/favorite_screen.dart';
 
 // Lista global temporal de favoritos (para demo, reemplazar por Provider o almacenamiento real en producción)
 List<ArtistModel> favoriteArtists = [];
@@ -211,12 +209,19 @@ class _ArtistScreenState extends State<ArtistScreen> {
                                 margin: const EdgeInsets.symmetric(vertical: 6),
                                 child: ListTile(
                                   leading: CircleAvatar(
-                                    backgroundImage: AssetImage(event.imagePath),
+                                    backgroundImage: AssetImage(
+                                      event.imagePath,
+                                    ),
                                     radius: 22,
                                   ),
                                   title: Text(event.title),
-                                  subtitle: Text("${event.date} • ${event.location}"),
-                                  trailing: const Icon(Icons.arrow_forward_ios, size: 18),
+                                  subtitle: Text(
+                                    "${event.date} • ${event.location}",
+                                  ),
+                                  trailing: const Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 18,
+                                  ),
                                   onTap: () {
                                     Navigator.push(
                                       context,
