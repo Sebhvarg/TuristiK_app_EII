@@ -143,7 +143,10 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SeleccionAsientosScreen(ticketCount: ticketCount),
+                        builder: (context) => SeleccionAsientosScreen(
+                          ticketCount: ticketCount,
+                          event: event,
+                        ),
                       ),
                     );
                   },

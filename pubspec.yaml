@@ -69,6 +69,7 @@ flutter:
     - assets/img/artist/
     - assets/img/concert/
     - assets/img/profile/
+    - assets/img/qr/
 
 
   # The following line ensures that the Material Icons font is

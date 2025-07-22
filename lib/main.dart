@@ -14,7 +14,7 @@ class TuristikApp extends StatelessWidget {
     return MaterialApp(
       title: 'Turistik',
       theme: AppTheme.light,
-      home: const MainScreen(), // usa MainScreen
+      home: const MainScreen(initialIndex: 2), // usa MainScreen
       debugShowCheckedModeBanner: false,
     );
   }

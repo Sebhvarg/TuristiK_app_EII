@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:turistik/data/models/event_model.dart';
 import 'pago.dart';
 
 class SeleccionAsientosScreen extends StatefulWidget {
   final int ticketCount;
-  const SeleccionAsientosScreen({super.key, required this.ticketCount});
+  final EventModel event; // <--- Agrega esto
+  const SeleccionAsientosScreen({
+    super.key,
+    required this.ticketCount,
+    required this.event, // <--- Agrega esto
+  });
 
   @override
   State<SeleccionAsientosScreen> createState() =>
@@ -222,7 +228,10 @@ class _SeleccionAsientosScreenState extends State<SeleccionAsientosScreen> {
                             MaterialPageRoute(
                               builder: (context) => PagoScreen(
                                 ticketCount: widget.ticketCount,
-                                ticketPrice: 5.0, // Cambia esto si tienes el precio real
+                                ticketPrice:
+                                    5.0, // Cambia esto si tienes el precio real
+                                event: widget
+                                    .event, // <--- Aquí pasas el evento real
                               ),
                             ),
                           );

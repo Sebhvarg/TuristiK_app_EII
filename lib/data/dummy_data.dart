@@ -88,7 +88,7 @@ final List<MusicalEventModel> concerts = [
   ),
   MusicalEventModel(
     title: 'Guardarraya - Me Fui A Volver',
-    date: '30/jul/2025',
+    date: '30/Jul/2025',
     hour: '19:00',
     location: 'Teatro Centro de Arte',
     imagePath: Assets.conciertoPlaceholder[1],

@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:turistik/data/models/event_model.dart';
+import 'success_buy.dart';
 
 class PagoScreen extends StatelessWidget {
   final int ticketCount;
   final double ticketPrice;
-  const PagoScreen({super.key, required this.ticketCount, required this.ticketPrice});
+  final EventModel event;
+  const PagoScreen({
+    super.key,
+    required this.ticketCount,
+    required this.ticketPrice,
+    required this.event,
+  });
 
   @override
   Widget build(BuildContext context) {
     // Cálculos de ejemplo
     final double serviceFee = 3.0;
     final double premiumDiscount = 1.5;
-    final double total = (ticketPrice * ticketCount) + serviceFee - premiumDiscount;
+    final double total =
+        (ticketPrice * ticketCount) + serviceFee - premiumDiscount;
 
     return Scaffold(
       appBar: AppBar(
@@ -48,7 +57,10 @@ class PagoScreen extends StatelessWidget {
                 const SizedBox(width: 10),
                 Text(
                   '$ticketCount Boletos para [Tu Función]',
-                  style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ],
             ),
@@ -65,8 +77,17 @@ class PagoScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Total', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                Text('  ${total.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                const Text(
+                  'Total',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+                Text(
+                  '  ${total.toStringAsFixed(2)}',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 28),
@@ -103,9 +124,26 @@ class PagoScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  // Datos de ejemplo, reemplaza por los reales si los tienes
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SuccessBuyScreen(
+                        ticketCount: ticketCount,
+                        asientos: [
+                          'C2',
+                          'C3',
+                        ], // Reemplaza por los asientos reales
+                        obra: event.title,
+                        ubicacion: event.location,
+                        fechaHora: '${event.date} | ${event.hour}',
+                      ),
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey.shade300,
+                  backgroundColor: Theme.of(context).primaryColor,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -113,7 +151,11 @@ class PagoScreen extends StatelessWidget {
                 ),
                 child: const Text(
                   'Pagar',
-                  style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),

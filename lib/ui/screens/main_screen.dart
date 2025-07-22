@@ -7,7 +7,7 @@ import 'package:turistik/ui/screens/profile_screen.dart';
 import 'package:turistik/data/dummy_data.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  const MainScreen({super.key, required int initialIndex});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
