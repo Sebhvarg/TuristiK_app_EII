@@ -31,14 +31,14 @@ class _SeleccionAsientosScreenState extends State<SeleccionAsientosScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              'TuristiK',
+              'Selección de asientos',
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -63,7 +63,7 @@ class _SeleccionAsientosScreenState extends State<SeleccionAsientosScreen> {
         ),
         centerTitle: false,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,7 +75,7 @@ class _SeleccionAsientosScreenState extends State<SeleccionAsientosScreen> {
             ),
             const SizedBox(height: 12),
             Container(
-              color: Colors.grey.shade300,
+              color: Colors.white10,
               padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 8),
               child: Column(
                 children: [
@@ -87,7 +87,7 @@ class _SeleccionAsientosScreenState extends State<SeleccionAsientosScreen> {
                     margin: const EdgeInsets.symmetric(vertical: 8),
                     height: 6,
                     width: 120,
-                    color: Colors.black,
+                    color: Theme.of(context).primaryColor,
                   ),
                   // Asientos
                   SizedBox(
@@ -144,7 +144,7 @@ class _SeleccionAsientosScreenState extends State<SeleccionAsientosScreen> {
                                       decoration: BoxDecoration(
                                         color: color,
                                         border: Border.all(
-                                          color: Colors.black,
+                                          color: Theme.of(context).primaryColor,
                                           width: 1.2,
                                         ),
                                         shape: BoxShape.circle,
@@ -305,14 +305,14 @@ class _ArcPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.black
-      ..strokeWidth = 2
+      ..color = const Color.fromRGBO(2, 94, 115, 1.0)
+      ..strokeWidth = 3
       ..style = PaintingStyle.stroke;
     final rect = Rect.fromLTWH(
       0,
-      size.height * 0.1,
+      size.height * 0.01,
       size.width,
-      size.height * 0.8,
+      size.height * 0.4,
     );
     canvas.drawArc(rect, 3.14, 3.14, false, paint);
   }

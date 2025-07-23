@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:turistik/ui/screens/main_screen.dart';
-import 'tickets_screen.dart';
 
 class QRScreen extends StatelessWidget {
   final int ticketCount;
@@ -20,7 +19,7 @@ class QRScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,

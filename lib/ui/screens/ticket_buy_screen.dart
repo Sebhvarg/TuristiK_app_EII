@@ -19,12 +19,12 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
     final price = event.price ?? 0;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
-        title: const Text(
-          'TuristiK',
-          style: TextStyle(
+        title: Text(
+          "Boletos para: ${event.title}",
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
             fontSize: 18,
@@ -32,7 +32,7 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
         ),
         centerTitle: false,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -51,12 +51,16 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                   vertical: 10,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
+                  color: Theme.of(context).colorScheme.primary,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.confirmation_num_outlined, size: 32),
+                    const Icon(
+                      Icons.confirmation_num_outlined,
+                      size: 32,
+                      color: Colors.white,
+                    ),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
@@ -64,13 +68,14 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                             ? ' \$${price.toStringAsFixed(0)} por persona'
                             : 'Gratis',
                         style: const TextStyle(
-                          fontSize: 18,
+                          fontSize: 20,
                           fontWeight: FontWeight.w500,
+                          color: Colors.white,
                         ),
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.remove),
+                      icon: const Icon(Icons.remove, color: Colors.white),
                       onPressed: ticketCount > 1
                           ? () => setState(() => ticketCount--)
                           : null,
@@ -80,18 +85,21 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.add),
-                      onPressed: () => setState(() => ticketCount++),
+                      icon: const Icon(Icons.add, color: Colors.white),
+                      onPressed: ticketCount < 9
+                          ? () => setState(() => ticketCount++)
+                          : null,
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 24),
               Text(
-                '${event.date} | ${event.hour}',
+                '${event.date} - ${event.hour}',
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -99,17 +107,14 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                 ),
               ),
               const SizedBox(height: 8),
-              const Text(
-                'Ubicación',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
+
               Text(
                 event.location,
-                style: const TextStyle(fontSize: 15, color: Colors.black87),
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
               const SizedBox(height: 16),
               ClipRRect(
@@ -151,7 +156,7 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey.shade300,
+                    backgroundColor: Theme.of(context).primaryColor,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -160,7 +165,7 @@ class _TicketBuyScreenState extends State<TicketBuyScreen> {
                   child: const Text(
                     'Seleccionar asientos',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
                     ),
