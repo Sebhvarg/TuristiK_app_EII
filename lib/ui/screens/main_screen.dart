@@ -7,15 +7,16 @@ import 'package:turistik/ui/screens/profile_screen.dart';
 import 'package:turistik/data/dummy_data.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key, required int initialIndex});
+  final int initialIndex;
+  const MainScreen({super.key, required this.initialIndex});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 2;
-  final PageController _pageController = PageController();
+  late int _selectedIndex;
+  late PageController _pageController;
 
   final List<Widget> _screens = [
     const FavoriteScreen(),
@@ -24,18 +25,23 @@ class _MainScreenState extends State<MainScreen> {
     const CalendarScreen(),
     ProfileScreen(
       userProfile: userProfile,
-    ), // Asegúrate de pasar el perfil del usuario
+    ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.initialIndex;
+    _pageController = PageController(initialPage: _selectedIndex);
+  }
 
   void _onItemTapped(int index) {
     if (_selectedIndex == index) return;
-    // Cambia la página con animación deslizante
     _pageController.animateToPage(
       index,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
-
     setState(() {
       _selectedIndex = index;
     });
@@ -52,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: PageView(
         controller: _pageController,
-        physics: const NeverScrollableScrollPhysics(), // Evita swipe manual
+        physics: const NeverScrollableScrollPhysics(),
         children: _screens,
       ),
       bottomNavigationBar: ClipRRect(
