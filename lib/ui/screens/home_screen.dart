@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                     ),
 
                     const Text(
-                      "Eventos Cercanos",
+                      "Eventos Cercanos a ti",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
