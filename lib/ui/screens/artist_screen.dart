@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turistik/data/models/artist_teatral_model.dart';
 import '../../data/models/artist_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../data/dummy_data.dart';
@@ -166,7 +167,9 @@ class _ArtistScreenState extends State<ArtistScreen> {
                           runSpacing: 10,
                           alignment: WrapAlignment.center,
                           children: [
-                            if ((artist as dynamic).spotifyUrl != null)
+                            // Mostrar el botón solo si el artista tiene spotifyUrl y NO es TeatralArtistModel
+                            if (artist is! TeatralArtistModel &&
+                                (artist as dynamic).spotifyUrl != null)
                               ElevatedButton.icon(
                                 onPressed: () =>
                                     _launchUrl((artist as dynamic).spotifyUrl),
