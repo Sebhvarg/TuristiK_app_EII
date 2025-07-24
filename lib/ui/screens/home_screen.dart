@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               const TopBar(),
               const SizedBox(height: 20),
-              const SearchBarWidget(dataList: []),
+              const SearchBarWidget(),
               const SizedBox(height: 20),
               Expanded(
                 child: ListView(
