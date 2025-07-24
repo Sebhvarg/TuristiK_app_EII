@@ -21,10 +21,10 @@ class QRScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.close, color: Colors.black),
+          icon: const Icon(Icons.close, color: Colors.white),
 
           onPressed: () {
             Navigator.pop(context); // Cierra el QR si fue push
@@ -38,9 +38,9 @@ class QRScreen extends StatelessWidget {
           },
         ),
         title: const Text(
-          'TuristiK',
+          'Entrada',
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
@@ -57,16 +57,26 @@ class QRScreen extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 10),
+            Divider(
+              color: Colors.grey, // Color personalizado
+              thickness: 2,
+              height: 16, // Espacio vertical que ocupa el Divider
+            ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.confirmation_num_outlined, size: 32),
+                const Icon(
+                  Icons.confirmation_num_outlined,
+                  size: 32,
+                  color: Color.fromRGBO(2, 94, 115, 1.0),
+                ),
                 const SizedBox(width: 4),
                 Text(
                   ticketCount.toString(),
                   style: const TextStyle(
                     fontSize: 20,
-                    color: Colors.green,
+                    color: Color.fromRGBO(2, 94, 115, 1.0),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -82,7 +92,7 @@ class QRScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              '*Presenta este código QR en el teatro',
+              '*Presenta este código QR para entrar al evento',
               style: TextStyle(fontSize: 14),
             ),
             const SizedBox(height: 18),

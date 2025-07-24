@@ -23,23 +23,23 @@ class PagoScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromRGBO(2, 94, 115, 1.0),
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.close, color: Colors.black, size: 28),
+          icon: const Icon(Icons.close, color: Colors.white, size: 28),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'TuristiK',
+          'Pago',
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
         ),
         centerTitle: false,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
         child: Column(
@@ -53,10 +53,14 @@ class PagoScreen extends StatelessWidget {
             const SizedBox(height: 16),
             Row(
               children: [
-                const Icon(Icons.confirmation_num_outlined, size: 36),
+                const Icon(
+                  Icons.confirmation_num_outlined,
+                  size: 36,
+                  color: Color.fromRGBO(2, 94, 115, 1.0),
+                ),
                 const SizedBox(width: 10),
                 Text(
-                  '$ticketCount Boletos para [Tu Función]',
+                  '$ticketCount Boletos para: ${event.title}',
                   style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w500,
@@ -68,14 +72,28 @@ class PagoScreen extends StatelessWidget {
             const Text(
               'Detalles',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             ),
+            Divider(
+              color: Colors.grey, // Color personalizado
+              thickness: 1,
+              height: 16, // Espacio vertical que ocupa el Divider
+            ),
+
             const SizedBox(height: 10),
             _detalleLinea('Boleto x$ticketCount', ticketPrice * ticketCount),
             _detalleLinea('Tarifa servicio', serviceFee),
             _detalleLinea('Descuento premium', -premiumDiscount),
             const SizedBox(height: 8),
+            Divider(
+              color: Color.fromRGBO(2, 94, 115, 1.0), // Color personalizado
+              thickness: 2,
+              height: 16, // Espacio vertical que ocupa el Divider
+            ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
               children: [
                 const Text(
                   'Total',
@@ -101,16 +119,34 @@ class PagoScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
               decoration: BoxDecoration(
                 color: Colors.grey.shade300,
+                border: Border.all(
+                  color: Color.fromRGBO(0, 0, 0, 1), // Color azul petróleo
+                  width: 2,
+                ),
                 borderRadius: BorderRadius.circular(6),
               ),
               child: Row(
                 children: const [
-                  Icon(Icons.credit_card, size: 28),
+                  Icon(
+                    Icons.credit_card,
+                    size: 28,
+                    color: Color.fromRGBO(0, 0, 0, 1),
+                  ),
                   SizedBox(width: 12),
                   Expanded(
-                    child: Text('Visa ***451', style: TextStyle(fontSize: 16)),
+                    child: Text(
+                      'Visa ***451',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color.fromRGBO(2, 94, 115, 1.0),
+                      ),
+                    ),
                   ),
-                  Icon(Icons.keyboard_arrow_down_rounded, size: 28),
+                  Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    size: 28,
+                    color: Color.fromRGBO(2, 94, 115, 1.0),
+                  ),
                 ],
               ),
             ),
@@ -152,7 +188,7 @@ class PagoScreen extends StatelessWidget {
                 child: const Text(
                   'Pagar',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 17,
                     fontWeight: FontWeight.w500,
                   ),
