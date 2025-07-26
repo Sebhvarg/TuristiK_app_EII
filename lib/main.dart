@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart'; // 👈 importa esto
 import 'core/theme/app_theme.dart';
 import 'ui/screens/main_screen.dart';
 
 void main() {
-  setUrlStrategy(const HashUrlStrategy()); // 👈 usa esto para rutas con #
+  // Comentado temporalmente hasta que necesites soporte web
+  // if (kIsWeb) {
+  //   setUrlStrategy(const HashUrlStrategy());
+  // }
+
   runApp(const TuristikApp());
 }
 
