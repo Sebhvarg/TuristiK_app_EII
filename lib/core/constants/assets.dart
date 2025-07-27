@@ -21,7 +21,7 @@ class Assets {
   ];
   static const artistTeatro = [
     'assets/img/artist/las_pajaros.jpg',
-    'assets/img/theater/lua.png',
+    'assets/img/artist/LEUA.jpg',
   ];
   static const profilePlaceholder = 'assets/img/profile/profile.jpg';
 }

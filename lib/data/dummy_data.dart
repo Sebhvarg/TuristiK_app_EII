@@ -195,6 +195,7 @@ final List<TeatralArtistModel> artistsTeatral = [
     teatroType:
         'Teatro del absurdo - Teatro expresionista - Teatro subrealista',
     genres: [GenreTeatro.tragicomedia, GenreTeatro.farsa],
+    url: "https://www.youtube.com/watch?v=l15ZjeL1weA",
   ),
   TeatralArtistModel(
     id: 'leua_id',
@@ -208,6 +209,7 @@ final List<TeatralArtistModel> artistsTeatral = [
       GenreTeatro.comedia,
       GenreTeatro.tragicomedia,
     ],
+    url: "https://www.youtube.com/watch?v=zSR4m6ap8zE",
   ),
 ];
 

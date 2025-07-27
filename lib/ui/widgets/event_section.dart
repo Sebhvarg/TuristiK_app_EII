@@ -33,15 +33,15 @@ class EventSection extends StatelessWidget {
         const SizedBox(height: 10),
         CarouselSlider(
           options: CarouselOptions(
-            height: 245,
+            height: 370,
             enableInfiniteScroll: false,
-            viewportFraction: 0.48,
+            viewportFraction: 0.8,
             padEnds: false,
           ),
           items: events.map((event) => EventCard(event: event)).toList(),
         ),
 
-        const SizedBox(height: 20),
+        const SizedBox(height: 40),
       ],
     );
   }

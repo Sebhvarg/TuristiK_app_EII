@@ -46,12 +46,11 @@ class _ArtistScreenState extends State<ArtistScreen> {
     ];
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         iconTheme: IconThemeData(
-          color: Theme.of(context).primaryColor,
+          color: Colors.white,
           shadows: [
             Shadow(
               color: Colors.black.withOpacity(0.7),
@@ -69,7 +68,7 @@ class _ArtistScreenState extends State<ArtistScreen> {
           IconButton(
             icon: Icon(
               isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: isFavorite ? Colors.red : Theme.of(context).primaryColor,
+              color: isFavorite ? Colors.red : Colors.white,
             ),
             onPressed: () {
               setState(() {
@@ -176,6 +175,35 @@ class _ArtistScreenState extends State<ArtistScreen> {
                                 icon: const Icon(Icons.music_note),
                                 label: const Text(
                                   "Escucha su música",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.black,
+                                  iconColor: Colors.white,
+                                  textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                        Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          alignment: WrapAlignment.center,
+                          children: [
+                            // Mostrar el botón solo si el artista tiene spotifyUrl y NO es TeatralArtistModel
+                            if (artist is TeatralArtistModel)
+                              ElevatedButton.icon(
+                                onPressed: () =>
+                                    _launchUrl((artist as dynamic).url),
+                                icon: const Icon(Icons.play_arrow),
+                                label: const Text(
+                                  "Mira su obra",
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 style: ElevatedButton.styleFrom(

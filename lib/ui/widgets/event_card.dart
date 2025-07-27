@@ -11,38 +11,49 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 220,
+      height: 350,
       child: Card(
         elevation: 4,
         margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         clipBehavior: Clip.antiAlias,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Imagen
-            SizedBox(
-              height: 100,
-              width: double.infinity,
-              child: Image.asset(event.imagePath, fit: BoxFit.cover),
+            // Imagen más grande y solo bordes superiores redondeados
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+              child: Image.asset(
+                event.imagePath,
+                height: 180,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
             // Contenido
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(16),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    // Título centrado y en negrita
                     Text(
                       event.title,
+                      textAlign: TextAlign.center,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
+
                     const SizedBox(height: 4),
+                    // Ubicación
                     Row(
                       children: [
                         const Icon(
@@ -61,7 +72,8 @@ class EventCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 2),
+                    // Fecha
                     Row(
                       children: [
                         const Icon(
@@ -76,29 +88,55 @@ class EventCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const Spacer(),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => EventDetailScreen(
-                                event: event,
-                                artistsMusical: artistsmusical, // Lista completa
-                                artistsTeatral: artistsTeatral, // Lista completa
-                              ),
-                            ),
-                          );
-                        },
-                        style: TextButton.styleFrom(
-                          foregroundColor: const Color(0xFF025E73),
-                          padding: EdgeInsets.zero,
-                          minimumSize: Size(0, 0),
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    // Precio y botón en la parte inferior
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.local_activity,
+                          size: 16,
+                          color: Colors.black,
                         ),
-                        child: const Text("Asistir ahora"),
+
+                        Text(
+                          event.price != null ? ' \$${event.price}' : ' Gratis',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EventDetailScreen(
+                              event: event,
+                              artistsMusical: artistsmusical,
+                              artistsTeatral: artistsTeatral,
+                            ),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF025E73),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 8,
+                        ),
+                      ),
+                      child: const Text(
+                        "Asistir ahora",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
                       ),
                     ),
                   ],

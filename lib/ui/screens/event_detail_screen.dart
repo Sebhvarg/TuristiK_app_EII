@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:turistik/data/models/artist_musical_model.dart';
 import 'package:turistik/data/models/artist_teatral_model.dart';
 import 'package:turistik/data/models/event_musical_model.dart';
+import 'package:turistik/data/models/event_teatral_model.dart';
 import '../../data/models/event_model.dart';
 import 'package:turistik/ui/screens/artist_screen.dart';
 import 'package:turistik/ui/screens/ticket_buy_screen.dart';
@@ -64,13 +65,12 @@ class EventDetailScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         iconTheme: IconThemeData(
-          color: Theme.of(context).primaryColor,
+          color: Colors.white,
           shadows: [
             Shadow(
               color: Colors.black.withOpacity(0.7),
@@ -84,6 +84,7 @@ class EventDetailScreen extends StatelessWidget {
             ),
           ],
         ),
+        title: Text(event.title, style: TextStyle(color: Colors.white)),
       ),
       body: Stack(
         children: [
@@ -93,11 +94,11 @@ class EventDetailScreen extends StatelessWidget {
             ),
             child: Image.asset(
               event.imagePath,
-              height: 250,
+              height: 257,
               width: double.infinity,
               fit: BoxFit.cover,
               color: Colors.black.withOpacity(0.2),
-              colorBlendMode: BlendMode.darken,
+              colorBlendMode: BlendMode.difference,
             ),
           ),
           SingleChildScrollView(
@@ -124,16 +125,68 @@ class EventDetailScreen extends StatelessWidget {
                                 fontSize: 28,
                               ),
                         ),
-                        const SizedBox(height: 10),
-                        Text(
-                          "${event.date} • ${event.location}",
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54,
-                          ),
+                        const SizedBox(height: 15),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.theaters,
+                                  size: 16,
+                                  color: Colors.grey,
+                                ),
+                                Text(
+                                  event.location,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black54,
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.calendar_month,
+                                  size: 16,
+                                  color: Colors.grey,
+                                ),
+                                Text(
+                                  event.date,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black54,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        const SizedBox(height: 16),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.local_activity,
+                              size: 16,
+                              color: Colors.grey,
+                            ),
+                            Text(
+                              event.price != null
+                                  ? ' \$${event.price}'
+                                  : ' Gratis',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 15),
+
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Text(
@@ -142,8 +195,27 @@ class EventDetailScreen extends StatelessWidget {
                             style: const TextStyle(fontSize: 16),
                           ),
                         ),
-                        const SizedBox(height: 24),
-                        const Divider(),
+                        const SizedBox(height: 15),
+                        if (event is TeatralEventModel)
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.star,
+                                size: 16,
+                                color: Colors.black54,
+                              ),
+                              Text(
+                                event is TeatralEventModel
+                                    ? " Director/a de obra: ${event.director}"
+                                    : "",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+
                         const SizedBox(height: 12),
                         Text(
                           eventArtists.length == 1
@@ -188,7 +260,8 @@ class EventDetailScreen extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => ArtistScreen(artist: artist),
+                                        builder: (context) =>
+                                            ArtistScreen(artist: artist),
                                       ),
                                     );
                                   },
@@ -235,7 +308,8 @@ class EventDetailScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => TicketBuyScreen(event: event),
+                                builder: (context) =>
+                                    TicketBuyScreen(event: event),
                               ),
                             );
                           },

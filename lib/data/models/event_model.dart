@@ -9,6 +9,7 @@ class EventModel {
   final double? price;
   final String type;
   final List<String> artistId;
+  final String? director;
 
   EventModel({
     required this.title,
@@ -21,5 +22,6 @@ class EventModel {
     this.price,
     required this.type,
     required this.artistId,
+    this.director,
   });
 }

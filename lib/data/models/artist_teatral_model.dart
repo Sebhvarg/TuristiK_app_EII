@@ -4,6 +4,7 @@ import '../enum/genre_teatro.dart';
 class TeatralArtistModel extends ArtistModel {
   final String teatroType;
   final List<GenreTeatro> genres;
+  final String? url;
   final String type = 'Teatral';
   TeatralArtistModel({
     required super.id,
@@ -12,5 +13,6 @@ class TeatralArtistModel extends ArtistModel {
     required super.description,
     required this.teatroType,
     required this.genres,
+    this.url,
   });
 }
